@@ -1,0 +1,1568 @@
+{
+	"info": {
+		"_postman_id": "e07e0f33-55ba-43ba-b9d0-ed95b5625d34",
+		"name": "API Documentation #reference",
+		"description": "This template contains a boilerplate for documentation that you can quickly customize and reuse.\n\n### How to use this template:\n\n- Replace the content given brackets (()) with your API's details.\n- Tips are formatted in `codespan` - feel free to read and remove them.\n    \n\n---\n\n`Start with a brief overview of what your API offers.`\n\nThe ((product name)) provides many API products, tools, and resources that enable you to ((add product value here)).\n\n`You can also list the APIs you offer, link to the relevant pages, or do both in this section.`\n\n## **Getting started guide**\n\n`List the steps or points required to start using your APIs. Make sure to cover everything required to reach success with your API as quickly as possible.`\n\nTo start using the ((add APIs here)), you need to -\n\n`The points given below are from The Postman API's documentation. You can reference it to write your own getting started guide.`\n\n- You must use a valid API Key to send requests to the API endpoints. You can get your API key from Postman's [integrations dashboard](https://go.postman.co/settings/me/api-keys).\n- The API has [rate and usage limits](https://postman.postman.co/workspace/Collection-Templates~6311738d-2e70-441f-ae12-78caf078c5b7/collection/22517504-e9c28f47-1253-44af-a2f3-20dce4da1f18?ctx=documentation#rate-and-usage-limits).\n- The API only responds to HTTPS-secured communications. Any requests sent via HTTP return an HTTP 301 redirect to the corresponding HTTPS resources.\n- The API returns request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key.\n    \n\n## Authentication\n\n`Add details on the authorization keys/tokens required, steps that cover how to get them, and the relevant error codes.`\n\nThe ((product name)) API uses ((add your API's authorization type)) for authentication.\n\n`The details given below are from the Postman API's documentation. You can reference it to write your own authentication section.`\n\nPostman uses API keys for authentication. You can generate a Postman API key in the [API keys](https://postman.postman.co/settings/me/api-keys) section of your Postman account settings.\n\nYou must include an API key in each request to the Postman API with the X-Api-Key request header.\n\n### Authentication error response\n\nIf an API key is missing, malformed, or invalid, you will receive an HTTP 401 Unauthorized response code.\n\n## Rate and usage limits\n\n`Use this section to cover your APIs' terms of use. Include API limits, constraints, and relevant error codes, so consumers understand the permitted API usage and practices.`\n\n`The example given below is from The Postman API's documentation. Use it as a reference to write your APIs' terms of use.`\n\nAPI access rate limits apply at a per-API key basis in unit time. The limit is 300 requests per minute. Also, depending on your plan, you may have usage limits. If you exceed either limit, your request will return an HTTP 429 Too Many Requests status code.\n\nEach API response returns the following set of headers to help you identify your use status:\n\n| Header | Description |\n| --- | --- |\n| `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make per minute. |\n| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window. |\n| `X-RateLimit-Reset` | The time at which the current rate limit window resets in UTC epoch seconds. |\n\n### 503 response\n\nAn HTTP `503` response from our servers indicates there is an unexpected spike in API access traffic. The server is usually operational within the next five minutes. If the outage persists or you receive any other form of an HTTP `5XX` error, [contact support](https://support.postman.com/hc/en-us/requests/new/).\n\n### **Need some help?**\n\n`Add links that customers can refer to whenever they need help.`\n\nIn case you have questions, go through our tutorials ((link to your video or help documentation here)). Or visit our FAQ page ((link to the relevant page)).\n\nOr you can check out our community forum, there’s a good chance our community has an answer for you. Visit our developer forum ((link to developer forum)) to review topics, ask questions, and learn from others.\n\n`You can also document or add links to libraries, code examples, and other resources needed to make a request.`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20741463",
+		"_collection_link": "https://gold-meadow-776325.postman.co/workspace/shop_x~e9718f95-ce34-4984-a839-978acfe0c930/collection/20741463-e07e0f33-55ba-43ba-b9d0-ed95b5625d34?action=share&source=collection_link&creator=20741463"
+	},
+	"item": [
+		{
+			"name": "app_baner",
+			"item": [
+				{
+					"name": "list/baner/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{lzazaka}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/baner/list/baner/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"baner",
+								"list",
+								"baner",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update/baner/id/",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{ladmin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "baner2",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/admins/Pictures/Screenshots/Screenshot from 2024-05-10 18-31-31.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/baner/update/baner/1/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"baner",
+								"update",
+								"baner",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create/baner/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ2ODgzODE1LCJpYXQiOjE3MTUzNDc4MTUsImp0aSI6ImIwM2EyMWRiYmZkZDRjMjE4Mjk1N2EzZGUzZjI5MGJlIiwidXNlcl9pZCI6MX0.HvCUx2BPzwq4UP1K27nZf7tXWDeHMW6hcJNb9QG3S_o",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "baner1",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [
+										"/home/admins/Pictures/Screenshots/Screenshot from 2024-04-09 23-47-35.png",
+										"/home/admins/Pictures/Screenshots/Screenshot from 2024-05-10 18-30-54.png"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/baner/create/baner/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"baner",
+								"create",
+								"baner",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete/baner/id/",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{ladmin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "baner1",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/Admin/Pictures/site/burger/domashnij-chizburger-s-syrom.webp"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/baner/delete/baner/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"baner",
+								"delete",
+								"baner",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail/baner/id/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/baner/detail/baner/4/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"baner",
+								"detail",
+								"baner",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "app_user",
+			"item": [
+				{
+					"name": "register/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email_or_phone\":\"nosades183@lucvu.com\",\r\n    \"username\":\"nosa\",\r\n    \"password\":\"986532kk\",\r\n    \"password_confirm\":\"986532kk\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/register/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email_or_phone\":\"lasega3062@neixos.com\",\r\n    \"password\":\"986532kk\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forget-password/reset/",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzExMjU2NTA3LCJpYXQiOjE3MTEwODM3MDcsImp0aSI6ImVlNDliOGVkMGY1NDQzYjU5MGUzNmFhNjIwMzQ5Y2QwIiwidXNlcl9pZCI6NH0.MeD2hNGiRGzqxEdsM5L36oeW_bJa4WK_npbwhi69VLo",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"code\":\"KU2FZD\",\r\n    \"password\":\"986532ll\",\r\n    \"confirm_password\":\"986532ll\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/user/forget-password/reset/",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"user",
+								"forget-password",
+								"reset",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify-register-code/",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"code\":\"3RXPB4\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/verify-register-code/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"verify-register-code",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send-code-to-email/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email_or_phone\":\"zazaka71@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/send-code-to-email/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"send-code-to-email",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/logout/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzExODc2MDk4LCJpYXQiOjE3MTE3MDMyOTgsImp0aSI6IjgxODJlYjA1YTJjYzQ3MWZiNjhhMmYzY2ZmZTI4MzQyIiwidXNlcl9pZCI6M30.YV6rzKFS40_QBGLboccrYnnKJPWj6lDoLqUi7s7x7zU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/logout/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/list-users/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{ladmin}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/list-users/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"list-users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail/user/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{ladmin}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/detail/user/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"detail",
+								"user",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seller/become-user/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3MDU2NDIzLCJpYXQiOjE3MTU1MjA0MjMsImp0aSI6ImQ5NzAzODUwZTIxMTQyNDJhOGM4N2Y5MDg2NDRlMmZmIiwidXNlcl9pZCI6MX0.VGQuc7GOh2hVPq2l0JhPThSZALEQbW1MBILhibbCMZ4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/become/user/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"become",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "app_userseller",
+			"item": [
+				{
+					"name": "password",
+					"item": [
+						{
+							"name": "forget-password/reset/",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ1NTc4NTcwLCJpYXQiOjE3MTQwNDI1NzAsImp0aSI6ImY1ZDE0ZmZjY2E3ZDRkMTE5ZWYzZjNiZWUwNGE0OWExIiwidXNlcl9pZCI6MX0.6IyDhBki2NNywj-fZMEBSx8i1uR6Hy4wl0Nw7FH8Ip0",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"code\":\"ZCYYJO\",\n    \"password\":\"986532ll\",\n    \"confirm_password\":\"986532ll\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/seller/forget-password/reset/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"seller",
+										"forget-password",
+										"reset",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/reset-password-profile/",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ1NTgwNTY5LCJpYXQiOjE3MTQwNDQ1NjksImp0aSI6ImE2NmRlMjEyMTBhYTQyZmRiYmI1ZTkxNDBkZjgxYjRmIiwidXNlcl9pZCI6MX0.1vWFrZYL9Ln443BjpcB54zJ1-2vbNUdeIm2xcGg1kps",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"old_password\":\"986532ll\",\n    \"new_password\":\"986532mm\",\n    \"confirm_new_password\":\"986532mm\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/seller/reset-password-profile/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"seller",
+										"reset-password-profile",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "seller/login/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email_or_phone\":\"zazaka71@gmail.com\",\n    \"password\":\"986532kk\"\n}\n\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/seller/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"seller",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seller/register/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email_or_phone\":\"zazaka71@gmail.com\",\n    // \"shop_name\":\"zaza\",\n    \"password\":\"986532kk\",\n    \"password_confirm\":\"986532kk\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/seller/register/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"seller",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify-register-code/",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"code\":\"BB6G3P\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/seller/verify-register-code/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"seller",
+								"verify-register-code",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send-code-to-email/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email_or_phone\":\"zazaka71@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/seller/send-code-to-email/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"seller",
+								"send-code-to-email",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seller/profiles/detail/<int:pk>/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{ladmin}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/seller/seller/profiles/detail/1/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"seller",
+								"seller",
+								"profiles",
+								"detail",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seller/profiles/update/<int:pk>/",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3MDU2NDIzLCJpYXQiOjE3MTU1MjA0MjMsImp0aSI6ImQ5NzAzODUwZTIxMTQyNDJhOGM4N2Y5MDg2NDRlMmZmIiwidXNlcl9pZCI6MX0.VGQuc7GOh2hVPq2l0JhPThSZALEQbW1MBILhibbCMZ4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "shop_name",
+									"value": "Kuba",
+									"type": "text"
+								},
+								{
+									"key": "email_or_phone",
+									"value": "zazaka71@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/seller/seller/profile/update/9/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"seller",
+								"seller",
+								"profile",
+								"update",
+								"9",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seller/become-seller/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3MDU2NDIzLCJpYXQiOjE3MTU1MjA0MjMsImp0aSI6ImQ5NzAzODUwZTIxMTQyNDJhOGM4N2Y5MDg2NDRlMmZmIiwidXNlcl9pZCI6MX0.VGQuc7GOh2hVPq2l0JhPThSZALEQbW1MBILhibbCMZ4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\n    \n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/seller/become/seller/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"seller",
+								"become",
+								"seller",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change/password/seller/",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3MDYxMTA0LCJpYXQiOjE3MTU1MjUxMDQsImp0aSI6IjlmOTZjODgyNDk1ZjQ4NDVhY2MxNWFiNjBkYzdlNjE2IiwidXNlcl9pZCI6OX0.gjR76RGxkg2i7Y6UPEsMy-BLDSuPTjhI3z-GIk0CkDc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"new_password\":\"986532kk\",\n    \"confirming_new_password\":\"986532kk\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/seller/change/password/seller/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"seller",
+								"change",
+								"password",
+								"seller",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "app_product",
+			"item": [
+				{
+					"name": "recall",
+					"item": [
+						{
+							"name": "list/recall",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/products/recall/list/1/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products",
+										"recall",
+										"list",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "recall/",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{ladmin}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "text",
+											"value": "wfwe",
+											"type": "text"
+										},
+										{
+											"key": "rating",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"value": "",
+											"type": "file"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/products/recall/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products",
+										"recall",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "products",
+					"item": [
+						{
+							"name": "product/list/",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzEwMjQ5NTMxLCJpYXQiOjE3MTAwNzY3MzEsImp0aSI6IjY2ODJhYmE0Y2FlNDQwMzc4MGNhNGU5M2JkZWFmNWEwIiwidXNlcl9pZCI6Nn0.cBEnkkr1auWaQw5Y0pwozhLg0Uh1yPfRGR1OMh7PAe0",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{server}}/products/product/list/",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"products",
+										"product",
+										"list",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "product/create/",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ3NTM3NTY3LCJpYXQiOjE3MTYwMDE1NjcsImp0aSI6IjliNzE1YjMyN2M1MDRjZGE5ODdmYmI4NGRiMGYxOWZlIiwidXNlcl9pZCI6Mn0.EEGNawRXG6Y9UXcsQfljduKekn8uJ-2Bb2LpRvxDXRU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "size",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "size",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "podcategory",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "product3",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "500",
+											"type": "text"
+										},
+										{
+											"key": "category",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "discount",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/products/product/create/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products",
+										"product",
+										"create",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "size",
+					"item": [
+						{
+							"name": "size/create/",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{ladmin}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sizes\":\"XXXL\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/products/size/create/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"products",
+										"size",
+										"create",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "app_category",
+			"item": [
+				{
+					"name": "categories/list/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{ladmin}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/category/categories/list/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"categories",
+								"list",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categories/create/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{ladmin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "размер7",
+									"type": "text"
+								},
+								{
+									"key": "img",
+									"type": "file",
+									"src": "/home/admins/Pictures/Screenshots/Screenshot from 2024-04-09 13-40-11.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/category/categories/create/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"categories",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "categories/pod/create/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{ladmin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"pododejda\",\r\n    \"category\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/category/pod/category/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"pod",
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pod/category/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/pod/category/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"pod",
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "category/detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/category/categories/40/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"category",
+								"categories",
+								"40",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "app_support_service",
+			"item": []
+		},
+		{
+			"name": "app_like",
+			"item": []
+		},
+		{
+			"name": "app_comment",
+			"item": []
+		},
+		{
+			"name": "app_chat",
+			"item": [
+				{
+					"name": "chats/",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzExODc2MDk4LCJpYXQiOjE3MTE3MDMyOTgsImp0aSI6IjgxODJlYjA1YTJjYzQ3MWZiNjhhMmYzY2ZmZTI4MzQyIiwidXNlcl9pZCI6M30.YV6rzKFS40_QBGLboccrYnnKJPWj6lDoLqUi7s7x7zU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/chats/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"chats",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "chats/slug/",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{lzazaka}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/chats/zazaka_kuba/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"chats",
+								"zazaka_kuba",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete/slug/",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{lzazaka}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/chats/delete/zazaka_kuba/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"chats",
+								"delete",
+								"zazaka_kuba",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "app_support_service",
+			"item": [
+				{
+					"name": "support/",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{lzazaka}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/support/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"support",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "support/room_name//",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{lzazaka}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/support/zazaka_admin/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"support",
+								"zazaka_admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "support/delete/zazaka_admin/",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{lzazaka}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/support/delete/zazaka_admin/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"support",
+								"delete",
+								"zazaka_admin",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "app_vip",
+			"item": [
+				{
+					"name": "list/vip/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vip/list/vip/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vip",
+								"list",
+								"vip",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail/vip/<int:pk>/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/vip/detail/vip/53/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vip",
+								"detail",
+								"vip",
+								"53",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rud/vip/<int:pk>/",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{ladmin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"product\":[1]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/vip/rud/vip/1/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vip",
+								"rud",
+								"vip",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create/vip/",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{ladmin}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "icon",
+									"type": "file",
+									"src": [
+										"/home/admins/Pictures/Screenshots/Screenshot from 2024-04-09 13-36-38.png",
+										"/home/admins/Pictures/horse/1eaa9932-58a6-495c-ac93-86099dff0db9.jpeg",
+										"/home/admins/Pictures/Screenshots/Screenshot from 2024-05-15 08-37-51.png",
+										"/home/admins/Pictures/Screenshots/Screenshot from 2024-05-18 09-59-41.png"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/vip/create/vip/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vip",
+								"create",
+								"vip",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "X-API-Key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://farming-simulator.pstmn.io"
+		}
+	]
+}
