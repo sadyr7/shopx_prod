@@ -4,8 +4,10 @@ from product.models import Product
 from product. serializers import ProductSerializer
 
 
-
-
+class ProductSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['name', 'description', 'price']
 
 class VipCreateSerializer(serializers.ModelSerializer):
     icon = serializers.ImageField(required=True)
@@ -19,7 +21,7 @@ class VipCreateSerializer(serializers.ModelSerializer):
 
 
 class VipListSerializer(serializers.ModelSerializer):
-    # products = serializers.SerializerMethodField()
+    product = ProductSerializers()
     class Meta:
         model = Vip
         fields = ['id',"product",'icon']

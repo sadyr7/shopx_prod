@@ -77,6 +77,7 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 
 
 
+
 class ProductSerializer(serializers.ModelSerializer):
     location = serializers.CharField(read_only=True)
     rating = serializers.DecimalField(max_digits=3, decimal_places=2, read_only=True)

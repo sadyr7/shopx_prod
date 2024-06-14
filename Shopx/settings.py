@@ -172,13 +172,14 @@ MEDIA_ROOT = "/usr/src/app/media"
 # STATIC_ROOT = "/home/hello/Desktop"
 
 # MEDIA_URL = "/media/"
-# MEDIA_ROOT = "/home/hello/Desktop"
+# MEDIA_ROOT = "/usr/src/app/media"
 
 
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
         'LOCATION': 'redis://redis:6379/1',
+        # 'LOCATION': 'redis://localhost:6379/1',
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
@@ -218,6 +219,7 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
            "hosts": [("redis", 6379)],
+            # "hosts": [("localhost", 6379)],
         },
     },
 }
@@ -226,7 +228,7 @@ CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
         'LOCATION': ['redis://redis:6379/1'],
-        
+        # 'LOCATION': ['redis://localhost:6379/1'],
     }
 }
 CACHE_TTL = 30
