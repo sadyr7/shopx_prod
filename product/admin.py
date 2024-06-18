@@ -40,11 +40,12 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Recall)
 class RecallAdmin(admin.ModelAdmin):
-    list_display = ["id","user", "product", "rating", "created",]
+    list_display = ['id', 'user', 'product', 'rating', 'images', 'text']
 
-@admin.register(RecallImages)
-class RecallImagesAdmin(admin.ModelAdmin):
-    list_display = ["id","images",]
+
+# @admin.register(RecallImages)
+# class RecallImagesAdmin(admin.ModelAdmin):
+#     list_display = ["id","images",]
 
 @admin.register(Size)
 class SizeAdmin(admin.ModelAdmin):

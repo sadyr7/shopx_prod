@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Recall, RecallImages, Size
+from .models import Product, Recall, Size
 from app_user.serializers import  UserRecallSerializer
 from app_vip.models import Vip
 import re
@@ -146,23 +146,29 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class RecallSerializer(serializers.ModelSerializer):
-    user= UserRecallSerializer(read_only=True)
+    # user= UserRecallSerializer(read_only=True)
     class Meta:
         model = Recall
-        fields = '__all__'
-        extra_kwargs = {'user': {'read_only': True, }, 'created': {'read_only': True, },
-                        'updated': {'read_only': True, },
-                        }
-
-    def to_representation(self, instance):
-        data_recall = super().to_representation(instance) 
-        data_recall['user'] = UserRecallSerializer(instance.user.all(), many=True, context=self.context).data
-
-        return data_recall
+        fields = ['id', 'user', 'product', 'rating', 'images', 'text']
 
 
-class RecallImageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RecallImages
-        fields = ['id','images']
+    # def create(self, validated_data):
+        # Добавляем текущего пользователя в данные для создания записи
+        # validated_data['user'] = self.context['request'].user
+        # return super().create(validated_data)
+        # # extra_kwargs = {'user': {'read_only': True, }, 'created': {'read_only': True, },
+        #                 'updated': {'read_only': True, },
+        #                 }
+
+    # def to_representation(self, instance):
+    #     data_recall = super().to_representation(instance) 
+    #     data_recall['user'] = UserRecallSerializer(instance.user.all(), many=True, context=self.context).data
+
+    #     return data_recall
+
+
+# class RecallImageSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = RecallImages
+#         fields = ['id','images']
 

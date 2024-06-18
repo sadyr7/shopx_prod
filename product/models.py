@@ -78,10 +78,11 @@ class Recall(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    images = models.ImageField(upload_to='recall_image/%Y/%m/%d/',blank=True,null=True)
     text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    recall_images = models.ManyToManyField('RecallImages')
+    # recall_images = models.ManyToManyField('RecallImages')
     def __str__(self):
         return f'{self.user} {self.product}'
 
@@ -89,8 +90,8 @@ class Recall(models.Model):
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
 
-class RecallImages(models.Model):
-    images = models.ImageField(upload_to='recall_image/%Y/%m/%d/',blank=True,null=True)
+# class RecallImages(models.Model):
+#     images = models.ImageField(upload_to='recall_image/%Y/%m/%d/',blank=True,null=True)
     
 
 class Like(models.Model):

@@ -2,8 +2,8 @@ from django.urls import path, include
 from .views import *
 from rest_framework.routers import DefaultRouter
 
-router = DefaultRouter()
-router.register('recall', RecallViewSet, basename='recall')
+# router = DefaultRouter()
+# router.register('recall', RecallViewSet, basename='recall')
 
 urlpatterns = [
 
@@ -13,12 +13,13 @@ urlpatterns = [
 
     # path('update/product/<int:id>/', ProductUpdateApiView.as_view()),
 
-    path('recall/list/<int:pk>/', RecallListApiView.as_view(), name='recall-list'),
-    path('recall/image/create/', ReccallImageCreateApiView.as_view(), name='recall-image-create'),
-
+    path('recall/rud/<int:pk>/', RecallRUDApiView.as_view()),
+    path('recall/list/', RecallListApiView.as_view()),
+    # path('recall/image/create/', ReccallImageCreateApiView.as_view(), name='recall-image-create'),
+    path('recall/create/', RecallCreateApiView.as_view()),
     path("like/<int:pk>/", LikeView.as_view(), name="like"),
 
-    path('', include(router.urls)),
+    # path('', include(router.urls)),
     # path('viewed-products/', ViewedProductListCreate.as_view(), name='viewed-product-list'),
 
     path('size/list/', SizeListApiView.as_view(), name='list-create'),

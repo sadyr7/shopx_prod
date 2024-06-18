@@ -1,14 +1,16 @@
+from rest_framework import permissions, status
+from rest_framework.response import Response
+from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework import generics, response
-from rest_framework.viewsets import GenericViewSet
 from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.filters import SearchFilter, OrderingFilter
 
 from django.db.models import Avg, Count, Q
 from django_filters.rest_framework import DjangoFilterBackend
-
+from rest_framework.views import APIView
 from .serializers import *
-from .models import Product, Recall, RecallImages ,Like, Size
+from .models import Product, Recall ,Like, Size
 from .filters import CustomFilter
 from datetime import datetime
 from rest_framework import permissions
@@ -115,75 +117,118 @@ class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
 # Представление для получения деталей, обновления и удаления продукта
 #====== Recall   ===========================================================
 
-class RecallListApiView(ListAPIView):
-    serializer_class = RecallSerializer
-
-    def get_queryset(self):
-        pk = self.kwargs.get('pk')
-        if pk is not None:
-            queryset = Recall.objects.filter(product=pk)
-            return queryset
-        else:
-            
-            return Recall.objects.none()
-
-
-class RecallViewSet(GenericViewSet):
+class RecallRUDApiView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Recall.objects.all()
     serializer_class = RecallSerializer
-    # permission_classes = [IsBuyer, ]
-
-    def create(self, request):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save(user=request.user)
-        
-        product = serializer.validated_data['product']
-        rating = serializer.validated_data['rating']
-        text = serializer.validated_data['text']    
-        print(request.user)
-        
-        product.rating = product.recall_set.aggregate(Avg('rating'))['rating__avg']
-        product.num_reviews = product.recall_set.count()
-        product.save()
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'pk'
 
 
-        title = f"Отзыв от {request.user.username} {datetime.utcnow()}\n{rating}\n{text}"
-        
-        whom = product.user.device_token
-        
-        # send_push_notification_recall.delay(title, whom)
-        
-        return Response({'success':'Отзыв был отправлен продавцу'})
-    
-    
-    def retrieve(self, request, pk=None):
-        instance = self.get_object()
-        serializer = self.get_serializer(instance)
+
+class RecallListApiView(APIView):
+    def get(self, request):
+        queryset = Recall.objects.all()
+        serializer = RecallSerializer(queryset, many=True)
         return Response(serializer.data)
 
-    def update(self, request, pk=None):
-        instance = self.get_object()
-        if instance.user == self.request.user:
-            serializer = self.get_serializer(instance, data=request.data, partial=True)
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            return Response(serializer.data)
-
-    def partial_update(self, request, pk=None):
-        return self.update(request, pk=None)
-
-    def destroy(self, request, pk=None):
-        instance = self.get_object()
-        if instance.user == self.request.user:
-            instance.delete()
-            return Response({'success':'Recall is deleted'})
+# from app_user.models import User
+from django.utils.timezone import now
 
 
-class ReccallImageCreateApiView(generics.CreateAPIView):
-    queryset = RecallImages.objects.all()
-    serializer_class = RecallImageSerializer
-    permission_classes = [permissions.IsAuthenticated]
+class RecallCreateApiView(CreateAPIView):
+    queryset = Recall.objects.all()
+    # permission_classes = [permissions.IsAuthenticated]
+    serializer_class = RecallSerializer
+
+    # def create(self, request, *args, **kwargs):
+    #     # Проверяем, что пользователь аутентифицирован
+    #     if not request.user.is_authenticated:
+    #         raise ValidationError({'detail': 'Пользователь не найден', 'code': 'user_not_found'})
+
+    #     serializer = self.get_serializer(data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+        
+        # try:
+        #     # Сохраняем сериализатор, пользователь будет добавлен автоматически через контекст
+        #     recall = serializer.save()
+        # except ValueError as e:
+        #     raise ValidationError({'detail': 'Ошибка при сохранении отзыва: {}'.format(str(e)), 'code': 'save_error'})
+
+        # product = recall.product
+        # rating = recall.rating
+        # text = recall.text
+        
+        # # Обновляем рейтинг продукта и количество отзывов
+        # product.rating = product.recall_set.aggregate(Avg('rating'))['rating__avg']
+        # product.num_reviews = product.recall_set.count()
+        # product.save()
+
+        # title = f"Отзыв от {request.user.username} {now()}\n{rating}\n{text}"
+
+        # whom = product.user.device_token
+        
+        # # Раскомментируйте строку ниже, чтобы отправить push-уведомление
+        # # send_push_notification_recall.delay(title, whom)
+        
+        # return Response({'success': 'Отзыв был отправлен продавцу'}, status=status.HTTP_201_CREATED)
+
+
+# class RecallViewSet(GenericViewSet):
+#     queryset = Recall.objects.all()
+#     serializer_class = RecallSerializer
+    # permission_classes = [IsBuyer, ]
+
+#     def create(self, request):
+#         serializer = self.get_serializer(data=request.data)
+#         serializer.is_valid(raise_exception=True)
+#         serializer.save(user=request.user)
+        
+#         product = serializer.validated_data['product']
+#         rating = serializer.validated_data['rating']
+#         text = serializer.validated_data['text']    
+#         print(request.user)
+        
+#         product.rating = product.recall_set.aggregate(Avg('rating'))['rating__avg']
+#         product.num_reviews = product.recall_set.count()
+#         product.save()
+
+
+#         title = f"Отзыв от {request.user.username} {datetime.utcnow()}\n{rating}\n{text}"
+        
+#         whom = product.user.device_token
+        
+#         # send_push_notification_recall.delay(title, whom)
+        
+#         return Response({'success':'Отзыв был отправлен продавцу'})
+    
+    
+#     def retrieve(self, request, pk=None):
+#         instance = self.get_object()
+#         serializer = self.get_serializer(instance)
+#         return Response(serializer.data)
+
+#     def update(self, request, pk=None):
+#         instance = self.get_object()
+#         if instance.user == self.request.user:
+#             serializer = self.get_serializer(instance, data=request.data, partial=True)
+#             serializer.is_valid(raise_exception=True)
+#             serializer.save()
+#             return Response(serializer.data)
+
+#     def partial_update(self, request, pk=None):
+#         return self.update(request, pk=None)
+
+#     def destroy(self, request, pk=None):
+#         instance = self.get_object()
+#         if instance.user == self.request.user:
+#             instance.delete()
+#             return Response({'success':'Recall is deleted'})
+
+
+# class ReccallImageCreateApiView(generics.CreateAPIView):
+#     queryset = RecallImages.objects.all()
+#     serializer_class = RecallImageSerializer
+#     permission_classes = [permissions.IsAuthenticated]
 #====== Like   ===========================================================
 
 class LikeView(generics.RetrieveDestroyAPIView):

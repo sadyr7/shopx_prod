@@ -172,7 +172,7 @@ MEDIA_ROOT = "/usr/src/app/media"
 # STATIC_ROOT = "/home/hello/Desktop"
 
 # MEDIA_URL = "/media/"
-# MEDIA_ROOT = "/usr/src/app/media"
+# # MEDIA_ROOT = "/usr/src/app/media"
 
 
 CACHES = {
